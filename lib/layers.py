@@ -13,11 +13,10 @@ class Layer:
 class Dense(Layer):
   #in_features is the size of a single sample
   #out_features is the no. of neurons
-    def __init__(self, in_features, out_features):
+    def __init__(self, in_features, out_features, init_scale):
       #random values for weights, randn gives normal distribution (mean 0, std 1)
       #the weights are reversed so that we don't need to perform transpose on the weights matrix
-        self.W = np.random.randn(in_features, out_features) * 1.0
-        #biases are initialized to zero
+        self.W = np.random.randn(in_features, out_features) * init_scale   #biases are initialized to zero
         self.b = np.zeros((1, out_features))
         self.x = None
         self.dW = None

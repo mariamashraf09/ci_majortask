@@ -21,6 +21,12 @@ class Tanh:
 
 
  #we won't use this activation function in solving xor as it only outputs positive value, we need non linear activation functions in solving xor like tanh and sigmoid
-class ReLU: #rectified linear unit
-  def forward(self,x):
-    self.output = np.maximum(0,x)
+class ReLU: #rectified linear unit    
+    def forward(self, x):
+        self.out = np.maximum(0, x)
+        return self.out
+
+    def backward(self, grad):
+        # derivative is 1 if x > 0 else 0
+        relu_grad = (self.out > 0).astype(float)
+        return grad * relu_grad

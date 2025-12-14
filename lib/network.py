@@ -10,6 +10,7 @@ class Network:
     def backward(self, grad):
         for layer in reversed(self.layers):
             grad = layer.backward(grad)
+        return grad
 
     def update(self, optimizer):
         optimizer.step(self.layers)
